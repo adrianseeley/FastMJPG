@@ -34,7 +34,7 @@ sudo apt-get update
 sudo apt-get install git build-essential libturbojpeg libturbojpeg0-dev libglfw3-dev v4l-utils libavutil-dev libavcodec-dev libavformat-dev libswscale-dev
 
 # Clone:
-git clone git@github.com:adrianseeley/FastMJPG.git
+git clone https://github.com/adrianseeley/FastMJPG.git
 cd ./FastMJPG
 
 # Build:
