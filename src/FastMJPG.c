@@ -281,25 +281,19 @@ static inline void printMetrics() {
         printf("    Count:       %lu\n", paramMetrics->count);
         if (paramIndex != 0) {
             printf("    Start:\n");
-            printf("        Total:   %lu\n", paramMetrics->startTotal);
             printf("        Average: %lu\n", paramMetrics->startAverage);
             printf("        Min:     %lu\n", paramMetrics->startMin);
             printf("        Max:     %lu\n", paramMetrics->startMax);
-            printf("        Last:    %lu\n", paramMetrics->startLast);
         }
         printf("    End:\n");
-        printf("        Total:   %lu\n", paramMetrics->endTotal);
         printf("        Average: %lu\n", paramMetrics->endAverage);
         printf("        Min:     %lu\n", paramMetrics->endMin);
         printf("        Max:     %lu\n", paramMetrics->endMax);
-        printf("        Last:    %lu\n", paramMetrics->endLast);
         if (paramIndex != 0) {
             printf("    Delta:\n");
-            printf("        Total:   %lu\n", paramMetrics->deltaTotal);
             printf("        Average: %lu\n", paramMetrics->deltaAverage);
             printf("        Min:     %lu\n", paramMetrics->deltaMin);
             printf("        Max:     %lu\n", paramMetrics->deltaMax);
-            printf("        Last:    %lu\n", paramMetrics->deltaLast);
         }
     }
     double durationTime = lastFrameTime - firstFrameTime;
