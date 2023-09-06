@@ -11,6 +11,7 @@ It can be integrated directly into your C application as a library, piped to you
 ## Table of Contents
 
 + [Alpha Notice](#alpha-notice)
++ [Benchmark](#benchmark)
 + [Install](#install)
 + [Syntax](#syntax)
     + [Capture (Input)](#capture-input)
@@ -25,6 +26,21 @@ It can be integrated directly into your C application as a library, piped to you
 ## Alpha Notice
 
 **FastMJPG is currently in a public alpha state. It is feature complete, and all known bugs have been fixed, though more issues are expected to be discovered as it is used by more people. It is not recommended for use in critical production environments at this time.**
+
+## Benchmark
+
++ A simple benchmarking test has been setup in `./benchmark/fastmjpg/` and `./benchmark/gstreamer/`.
++ You can find information on required libraries in `*/REQUIRES.md` and and use `*./build` to create a binary in `*/bin/main`.
++ The benchmark test will record when a frame buffer has been received from a camera fully, then calculate the delta time until it has been fully sent to render on screen.
++ The test uses a loopback device and udp transport to simulate a perfect network connection and remove any network artifacts from the test measuring instead just the application overhead.
++ This is not a perfect measurement, but it is the best that can be done with the tools available, feedback would be greatly appreciated especially for the GStreamer benchmark.
++ Lower is less delay/latency glass-to-glass.
+
+```sh
+gstreamer: 21815 useconds
+fastmjpg:   4681 useconds
+```
+
 
 ## Install
 
