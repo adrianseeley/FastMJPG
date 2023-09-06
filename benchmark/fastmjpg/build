@@ -1,0 +1,46 @@
+#!/bin/bash
+
+CC=gcc
+CFLAGS="-Wall -Wextra -Werror -O3 -I../../include"
+LFLAGS="-lturbojpeg -lglfw -lavformat -lavcodec -lavutil -lm -pthread -O3"
+
+rm -rf ./obj
+mkdir -p ./obj
+rm -rf ./bin
+mkdir -p ./bin
+
+compile(){
+    echo $CC $CFLAGS -c $1 -o $2
+    $CC $CFLAGS -c $1 -o $2
+    if [ $? -ne 0 ]; then
+        echo "Compilation failed for $cFilename!"
+        exit 1
+    fi
+}
+
+link() {
+    filenames=("${@:1:$#-1}")
+    output_file="${!#}"
+    echo $CC "${filenames[@]}" $LFLAGS -o "$output_file"
+    $CC "${filenames[@]}" $LFLAGS -o "$output_file"
+    if [ $? -ne 0 ]; then
+        echo "Linking failed!"
+        exit 1
+    fi
+}
+
+compile "../../src/GLAD.c" "./obj/GLAD.o"
+compile "../../src/VideoCapture.c" "./obj/VideoCapture.o"
+compile "../../src/VideoDecoder.c" "./obj/VideoDecoder.o"
+compile "../../src/VideoPipe.c" "./obj/VideoPipe.o"
+compile "../../src/VideoRecorder.c" "./obj/VideoRecorder.o"
+compile "../../src/VideoRenderer.c" "./obj/VideoRenderer.o"
+compile "../../src/VideoUDPReceiver.c" "./obj/VideoUDPReceiver.o"
+compile "../../src/VideoUDPSender.c" "./obj/VideoUDPSender.o"
+compile "../../src/VideoUDPShared.c" "./obj/VideoUDPShared.o"
+compile "./main.c" "./obj/main.o"
+
+link "./obj/GLAD.o" "./obj/VideoCapture.o" "./obj/VideoDecoder.o" "./obj/VideoPipe.o" "./obj/VideoRecorder.o" "./obj/VideoRenderer.o" "./obj/VideoUDPReceiver.o" "./obj/VideoUDPSender.o" "./obj/VideoUDPShared.o" "./obj/main.o" "./bin/main"
+
+echo "Build successful!"
+exit 0
