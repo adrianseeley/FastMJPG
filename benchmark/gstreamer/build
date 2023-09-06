@@ -3,4 +3,4 @@
 rm -rf ./bin
 mkdir -p ./bin
 
-gcc main.c -o ./bin/main `pkg-config --cflags --libs gstreamer-1.0` -pthread
+gcc main.c -o ./bin/main `pkg-config --cflags --libs gstreamer-1.0` -pthread -O3
