@@ -29,12 +29,13 @@ It can be integrated directly into your C application as a library, piped to you
 
 ## Benchmark
 
-+ A simple benchmarking test has been setup in `./benchmark/fastmjpg/` and `./benchmark/gstreamer/`.
-+ You can find information on required libraries in `*/REQUIRES.md` and and use `*./build` to create a binary in `*/bin/main`.
-+ The benchmark test will record when a frame buffer has been received from a camera fully, then calculate the delta time until it has been fully sent to render on screen.
-+ The test uses a loopback device and udp transport to simulate a perfect network connection and remove any network artifacts from the test measuring instead just the application overhead.
-+ This is not a perfect measurement, but it is the best that can be done with the tools available, feedback would be greatly appreciated especially for the GStreamer benchmark.
-+ Lower is less delay/latency glass-to-glass.
+A simple benchmarking test has been setup in `./benchmark/fastmjpg/` and `./benchmark/gstreamer/`. You can find information on required libraries in `*/REQUIRES.md` and and use `*./build` to create a binary in `*/bin/main`.
+
+The benchmark test will record when a frame buffer has been received from a camera fully, then calculate the delta time until it has been fully sent to render on screen. The test uses a loopback device and udp transport to simulate a perfect network connection and remove any network artifacts from the test measuring instead just the application overhead.
+
+This is not a perfect measurement, but it is the best that can be done with the tools available, feedback would be greatly appreciated especially for the GStreamer benchmark.
+
+*Lower is less processing delay/latency glass-to-glass.*
 
 ```sh
 gstreamer: 21815 useconds
