@@ -22,7 +22,7 @@ void VideoPipeWriteFrame(VideoPipe* videoPipe, uint64_t uTimestamp, void* start,
         exit(EXIT_FAILURE);
     }
     if (bytesWritten != sizeof(uint64_t)) {
-        fprintf(stderr, "Error writing timestamp to pipe. Wrote %ld bytes instead of %ld bytes.\n", bytesWritten, sizeof(uint64_t));
+        fprintf(stderr, "Error writing timestamp to pipe.\n");
         exit(EXIT_FAILURE);
     }
     length       = htobe32(length);
@@ -32,7 +32,7 @@ void VideoPipeWriteFrame(VideoPipe* videoPipe, uint64_t uTimestamp, void* start,
         exit(EXIT_FAILURE);
     }
     if (bytesWritten != sizeof(uint32_t)) {
-        fprintf(stderr, "Error writing length to pipe. Wrote %ld bytes instead of %ld bytes.\n", bytesWritten, sizeof(uint32_t));
+        fprintf(stderr, "Error writing length to pipe.\n");
         exit(EXIT_FAILURE);
     }
     uint32_t bytesRemaining = length;
@@ -44,7 +44,7 @@ void VideoPipeWriteFrame(VideoPipe* videoPipe, uint64_t uTimestamp, void* start,
             exit(EXIT_FAILURE);
         }
         if (bytesWritten != bytesToWrite) {
-            fprintf(stderr, "Error writing frame to pipe. Wrote %ld bytes instead of %u bytes.\n", bytesWritten, bytesToWrite);
+            fprintf(stderr, "Error writing frame to pipe.\n");
             exit(EXIT_FAILURE);
         }
         bytesRemaining -= bytesWritten;
