@@ -46,7 +46,7 @@ void* sendEntry(void* arg) {
     sendAddr.sin_port           = htons(5001);
     sendAddr.sin_addr.s_addr    = inet_addr("127.0.0.1");
 
-    VideoCapture*   videoCapture   = VideoCaptureCreate("/dev/video2", 1280, 720, 1, 30);
+    VideoCapture*   videoCapture   = VideoCaptureCreate("/dev/video0", 1280, 720, 1, 30);
     VideoUDPSender* videoUDPSender = VideoUDPSenderCreate(MAX_PACKET_LENGTH, MAX_JPEG_LENGTH, &bindAddr, &sendAddr);
     for (;;) {
         VideoCaptureGetFrame(videoCapture);

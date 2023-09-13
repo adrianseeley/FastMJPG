@@ -43,7 +43,7 @@ void VideoPipeWriteFrame(VideoPipe* videoPipe, uint64_t uTimestamp, void* start,
             perror("Error writing frame to pipe.");
             exit(EXIT_FAILURE);
         }
-        if (bytesWritten != bytesToWrite) {
+        if (bytesWritten != (int32_t)bytesToWrite) {
             fprintf(stderr, "Error writing frame to pipe.\n");
             exit(EXIT_FAILURE);
         }
